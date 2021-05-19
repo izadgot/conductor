@@ -14,10 +14,11 @@
 package conductor
 
 import (
-	"github.com/netflix/conductor/client/go/task"
 	"log"
 	"os"
 	"time"
+
+	"github.com/izadgot/conductor/client/go/task"
 )
 
 var (
@@ -88,12 +89,14 @@ func (c *ConductorWorker) PollAndExecute(taskType string, domain string, execute
 			continue
 		}
 
-		// Found a task, so we send an Ack
-		_, ackErr := c.ConductorHttpClient.AckTask(parsedTask.TaskId, hostname, domain)
-		if ackErr != nil {
-			log.Println("Error Acking task:", ackErr.Error())
-			continue
-		}
+		/*
+			// Found a task, so we send an Ack
+			_, ackErr := c.ConductorHttpClient.AckTask(parsedTask.TaskId, hostname, domain)
+			if ackErr != nil {
+				log.Println("Error Acking task:", ackErr.Error())
+				continue
+			}
+		*/
 
 		// Execute given function
 		c.Execute(parsedTask, executeFunction)
