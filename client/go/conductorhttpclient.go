@@ -18,7 +18,7 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/netflix/conductor/client/go/httpclient"
+	"github.com/izadgot/conductor/client/go/httpclient"
 )
 
 type ConductorHttpClient struct {
